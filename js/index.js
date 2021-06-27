@@ -15,20 +15,30 @@ function scrollFunction() {
 
 function copyGlass () {
   const el = document.createElement('textarea');
-  el.value = `.ui-glass {
+  el.value = `
+  .ui-container-glass {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 15rem;
+    height: 15rem;
+    background-image: linear-gradient(
+      to top right,
+      darkgreen 50%,
+      lightgreen 100%
+      );
+  }
+  
+  .ui-glass {
+    width: 75%;
+    height: 75%;
     background-color: rgba(255, 255, 255, 0.2);
     backdrop-filter: blur(40px);
     border: 2px solid transparent;
     background-clip: padding-box;
-    }
-
-    .ui-container-glass {
-    background-image: linear-gradient(
-        to top right,
-        darkgreen 50%,
-        lightgreen 100%
-    );
-    }`;
+  }
+/* Put .ui-glass element inside .ui-container-glass element */
+  `;
   document.body.appendChild(el);
   el.select();
   document.execCommand('copy');

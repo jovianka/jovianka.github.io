@@ -84,11 +84,6 @@ a {
   transition: all 0.3s ease 0s;
 }
 
-a:hover:not(.outlined) {
-  filter: brightness(70%);
-  transition: all 0.3s ease 0s;
-}
-
 h1,
 h2,
 h3,
@@ -178,6 +173,10 @@ h1 {
   width: 2.5rem;
 }
 
+.navbar a:hover {
+  filter: brightness(70%);
+  transition: all 0.3s ease 0s;
+}
 /* NAVBAR END */
 
 /* HOME START */
