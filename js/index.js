@@ -41,6 +41,7 @@ function copyGlass () {
   `;
   document.body.appendChild(el);
   el.select();
+  el.setSelectionRange(0, 99999);
   document.execCommand('copy');
   document.body.removeChild(el);
 };
