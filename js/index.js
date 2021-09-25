@@ -1,16 +1,13 @@
 window.onscroll = function() {scrollFunction()};
 
 function scrollFunction() {
-  if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80)
-  {
+    if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
     document.getElementById("navbar").style.padding = "0rem 0";
     document.getElementById("navbar").style.boxShadow = "0px 0px 10px 0px var(--bgcolor-shadow)";
-  }
-  else
-  {
+    } else {
     document.getElementById("navbar").style.padding = "0.5rem 0";
     document.getElementById("navbar").style.boxShadow = "0px 0px 10px 0px var(--bgcolor-light-ll)";
-  }
+    }
 }
 
 function copyGlass () {
@@ -45,3 +42,38 @@ function copyGlass () {
   document.execCommand('copy');
   document.body.removeChild(el);
 };
+
+const openModalButtons = document.querySelectorAll('[data-modal-target-open]');
+const closeModalButtons = document.querySelectorAll('[data-modal-target-close]');
+const overlay = document.querySelector('.modal-overlay');
+
+function closeModal(modalTarget) {
+    if (modalTarget == null) {return;}
+    modalTarget.classList.remove('active');
+    overlay.classList.remove('active');
+}
+
+function openModal(modalTarget) {
+    if (modalTarget == null) {return;}
+    modalTarget.classList.add('active');
+    overlay.classList.add('active');
+}
+
+openModalButtons.forEach(button => {
+    const modal = document.querySelector(button.dataset.modalTargetOpen);
+    button.addEventListener('click', () => {
+        openModal(modal);
+    })
+})
+
+closeModalButtons.forEach(button => {
+    const modal = document.querySelector(button.dataset.modalTargetClose);
+    button.addEventListener('click', () => {
+        closeModal(modal);
+    })
+
+    overlay.addEventListener('click', () => {
+        closeModal(modal);
+    })
+
+})
